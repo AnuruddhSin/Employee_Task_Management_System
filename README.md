@@ -61,7 +61,7 @@ Here are some screenshots of the Employee Task Management System:
 ![Home](SS%20Projects/Home.png)
 
 ### Admin Dashboard
-![Admin Dashboard](SS%20Projects/Admin_dash.png)
+![Admin Dashboard](SS%20Projects/Adimin_dash.png)
 
 ### Employee Dashboard
 ![Employee Dashboard](SS%20Projects/emp_dash.png)
