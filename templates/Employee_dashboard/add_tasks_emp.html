@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1">
+    <title>Add Task</title>
+    <link rel="stylesheet"
+          href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="static/css/admin_dashboard_css/style.css">
+
+
+    <link rel="stylesheet" href="static/css/admin_dashboard_css/multi_select_tag.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+
+
+    <script src="static/js/admin_dashboard_js/script.js"></script>
+    <style>
+        body {
+         font-family: Arial, sans-serif;
+         margin: 0px;
+         padding: 0;
+       }
+       .form-container {
+         background-color: #081b29;
+         padding: 70px;
+         border-radius: 10px;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+         width: 90%;
+         margin: 5vw auto ;
+       }
+     .form-container h2{
+         position: relative;
+         align-items: center;
+         color: #00abf0;
+         font-size: 30px;
+         margin-bottom: 15px;
+         text-align:center;
+     }
+       .form-container:hover{
+         box-shadow: 18px 16px 22px #00abf0;
+       }
+
+       .form-container label {
+         display: block;
+         margin-bottom: 5px;
+         font-weight: bold;
+         font-size: 1rem;
+         color: #fff;
+       }
+     .input-field{
+         outline: none;
+         font-size: 14px;
+         font-weight: 400;
+         color: #333;
+         border-radius: 5px;
+         border: 2.5px solid #00abf0;
+         padding: 0 15px;
+         height: 42px;
+         margin: 5px 0;
+     }
+     input:hover{
+         border: 2.5px solid #ee00ff;
+     }
+       .form-container input[type="text"],
+       .form-container input[type="email"],
+       .form-container input[type="tel"],
+       .form-container input[type="password"],
+       .form-container input[type="time"],
+       .form-container textarea {
+         width: 100%;
+         border-radius: 5px;
+         padding: 0px;
+         border: 2.5px solid #00abf0;
+         margin:1px;
+         margin-bottom: 20px;
+       }
+       .form-container input:hover,
+       .form-container textarea:hover{
+         border: 2.5px solid #ee00ff;
+       }
+
+       .form-container input[type="file"] {
+         margin-bottom: 15px;
+         color: #707070;
+         padding: 1%;
+
+       }
+
+       .form-container button {
+         background-color: #007bff;
+         color: #fff;
+         border: none;
+         padding: 10px 20px;
+         border-radius: 5px;
+         cursor: pointer;
+         font-weight: bold;  }
+
+       .form-container button:hover {
+         background-color: #ee00ff;
+         transform: translateX(20px);
+         box-shadow: 4px 2px 8px #00abf0;
+     }
+     .row {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 15px;
+       }
+
+       .col {
+         width: 45%; /* Adjust the width as needed */
+       }
+              .sub{
+  margin-left: 400px;
+}
+       @media (max-width: 768px) {
+         .row {
+           flex-direction: column;
+         }
+         .col {
+           width: 100%;
+         }
+                  .sub{
+          margin-left: 150px;
+          width: 40%;
+         }
+       }
+              @media (max-width:540px) {
+        .sub{
+          margin-left: 80px;
+          width: 40%;
+         }
+       }
+     </style>
+</head>
+<body>
+<input type="checkbox" id="nav-toggle">
+{% include 'Employee_dashboard/sidebar_common_code.html' %}
+<div class="main-content">
+    <header style="margin-bottom:100px;">
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+                        Employee Dashboard
+
+        </h2>
+        <div class="search-wrapper">
+            <span class="las la-search"></span>
+            <input type="search" placeholder="Search here"/>
+        </div>
+        <div class="user-wrapper">
+<!--            <img src="img/admin.png" width="40px" height="40px" alt="">-->
+            <div>
+                <h4>{{session.employeeName}}</h4>
+                <small>Employee ID: {{session.employeeId}}</small>
+            </div>
+        </div>
+    </header>
+    <div class="form-container">
+        <h2>New Task</h2>
+
+        <form action="/add task" method="post" enctype="multipart/form-data">
+            <div class="row"></div>
+            <div class="col">
+                <input type="hidden" class="input-field" id="datetime" name="real_time_sh" readonly required style="width: 100%">
+            </div>
+
+            <hr style="margin-bottom: 15px;">
+            <div class="row">
+                 <div class="col">
+                    <label for="taskName">Task Name</label>
+                    <input class="input-field" type="text" id="taskName" name="taskName" required>
+                </div>
+ <div class="col">
+                    <label for="priority">Task Priority</label>
+                    <select id="priority" name="priority" class="priority-select" required style="width: 100%;">
+                        <option value="" selected disabled>Select Task Priority</option>
+                        <option value="normal">Normal</option>
+                        <option value="medium">Medium</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="most_urgent">Most Urgent</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row">
+
+    <div class="col">
+                    <label for="employeeId">Task Manager</label>
+                    <select id="employeeId" name="employeeId[]" multiple>
+                        {% for employee in employees %}
+                        <option value="{{ employee.id }}">{{ employee.name }} ({{ employee.id }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="startTime">Deadline</label>
+                    <input class="input-field" type="datetime-local" id="startTime" name="deadline" required
+                           style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="status">Task Status</label>
+                    <select id="status" name="status" class="status-select"  required style="width: 100%;">
+                        <option value="Review">Review</option>
+                        <option value="In-progress">In-progress</option>
+                        <option value="pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+
+            </div>
+            <label for="description">Task Description</label>
+            <textarea id="description" name="description" rows="3"></textarea>
+
+
+            <div class="row">
+                <button class="sub" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="last-text">
+      <p>All Copyrights &COPY;ANNI Reserved</p>
+    </div>
+</div>
+<script src="static/js/admin_dashboard_js/multi_select_tag.js"></script>
+<script>
+    new MultiSelectTag('employeeId')// id
+</script>
+
+<script>
+    var currentDateUTC = new Date();
+
+    var ISTOffset = 330; // IST is UTC+5:30
+
+    var currentDateIST = new Date(currentDateUTC.getTime() + (ISTOffset * 60 * 1000));
+
+    var formattedDateIST = currentDateIST.toISOString().slice(0, 19).replace("T", " ");
+
+    document.getElementById("datetime").value = formattedDateIST;
+</script>
+</body>
+</html>

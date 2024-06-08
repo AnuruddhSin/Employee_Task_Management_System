@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1">
+    <title>Manage Task</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="static/css/admin_dashboard_css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="static/js/admin_dashboard_js/script.js"></script>
+</head>
+<body>
+    <style>
+        .card-single h2{
+            font-size: 1.5rem;
+            color: aliceblue;
+        }
+        .cards{
+            margin-bottom: 20px;
+        }
+    </style>
+<input type="checkbox" id="nav-toggle">
+{% include 'admin_dashboard/sidebar_template.html' %}
+<div class="main-content">
+    <header>
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+                    Query Dashboard
+        </h2>
+        <div class="search-wrapper">
+    <span class="las la-search"></span>
+    <input type="search" id="taskSearch" name="taskSearch" placeholder="Search By Tasks Id " oninput="filterJobs()">
+</div>
+
+        <div class="user-wrapper">
+            <img src="static/img/Anuruddh.jpg" width="40px" height="40px" alt="">
+            <div>
+                <h4>Anuruddh Singh</h4>
+                <small>Admin</small>
+            </div>
+        </div>
+    </header>
+<main>
+<div class="cards">
+        <div class="card-single">
+            <a href="/unsolved_quaries_by_admin">
+                <div>
+                    <h2>Unsolved Queries</h2>
+                </div>
+                <div>
+                    <span class="las la-file"></span>
+                </div>
+            </a>
+        </div>
+        <div class="card-single">
+            <a href="/solved_queries_by_admin">
+                <div>
+                    <h2>Resolved Queries</h2>
+                </div>
+                <div>
+                    <span class="las la-file-alt"></span>
+                </div>
+            </a>
+        </div>
+
+    </div><br>
+    <div style=" min-height: 40vh;">
+                            <div class="activity-card">
+                                <div class="card-header">
+                                    <h3>Unsolved Quaries</h3>
+                                </div>
+                              <table>
+    <thead>
+        <tr>
+            <th>Task Querry Id</th>
+            <th>Task Id</th>
+            <th>Task Name</th>
+            <th>View</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+     {% for row in task_querry %}
+        <tr>
+            <td data-label="Task Querry Id">{{row.5}}</td>
+            <td data-label="Task Id">{{row.1}}</td>
+            <td data-label="Task Name">{{row.2}}</td>
+            <td data-label="View">
+                <a href="/view_action_by_admin?task_querry_id={{ row.5 }}"><i class='las la-eye' style="font-size: 1.8rem; color: aliceblue;"></i></a>
+            </td>
+            <td data-label="Update"><a href ="/update_quarries_by_admin?task_querry_id={{ row.5 }}"><button class="badge success" >Update</button></a></td>
+
+        </tr>
+            {% endfor %}
+
+    </tbody>
+</table>
+                            </div>
+    </div>
+</main>
+    <div class="last-text" style="margin-top:50px;">
+      <p>All Copyrights &COPY;ANNI Reserved</p>
+    </div>
+</div>
+</body>
+</html>

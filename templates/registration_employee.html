@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="static/css/registration_employee.css">
+     
+    <title>Employee Regisration Form </title>
+
+</head>
+<body>
+    <div class="container">
+        <header>Registration Form</header>
+
+        <form action="#" id="otpForm" method="post" enctype = multipart/form-data>
+               {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+                    <hr style="margin-bottom: 15px;"/>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>First Name</label>
+                            <input type="text" placeholder="Enter your name" name="f_name" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Middle Name</label>
+                            <input type="text" placeholder="Enter your name" name="m_name">
+                        </div>
+                        <div class="input-field">
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Enter your name" name="l_name" required>
+                        </div>
+                        </div>
+                        <div class="fields">
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            <input type="date" placeholder="Enter birth date" id="dob" name="dob" required onchange="calculateAge()">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Age</label>
+                            <input type="number" placeholder="Enter your Age" name="age" id="ageInput" min="14" max="60" required>
+                        </div>
+                        
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select name="gender" required>
+                                <option disabled selected>Select gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+</div>
+                    <div class="fields">
+                        <div class="input-field">
+             <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter Email Id " name="email" required>
+                            <button type="button" id="generateBtn" onclick="send_otp_email()" class="b1" style="margin-top: 1%; padding: 8px;" value="Generate OTP" >Generate OTP</button>
+                        <div id="messageContainer2" class="messageContainer_style1"></div>
+                        </div>
+                        <div class="input-field">
+        <label for="otp1">Enter OTP:</label>
+        <input type="text" id="otp1" name="otp" placeholder="Enter Email Otp Here" required >
+
+        <input type="hidden" id="generatedOTP" name="generatedOTP">
+                            <button type="button" style="margin-top: 1%; padding: 8px;" onclick="verify_otp_email()" id="verifyBtn" class="b1" value="Verify OTP" >Verify OTP</button>
+           <div id="messageContainer3" class="messageContainer_style2" ></div>
+                        </div>
+                    </div>
+                    <div class="fields" style="margin-bottom: -40px;">
+                        <div class="form-group1">
+                            <label for="contact">Mobile Number:</label>
+                            <div style="display: flex;">
+                              <select id="countriesCode" name="countryCode" required onchange="updateNumberPad(this)">
+                                <option value="+91" selected>+91 (India)</option>
+                                <option value="+1">+1 (USA)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+61">+61 (Australia)</option>
+                                <option value="+86">+86 (China)</option>
+                                <option value="+33">+33 (France)</option>
+                                <option value="+49">+49 (Germany)</option>
+                                <option value="+81">+81 (Japan)</option>
+                                <option value="+7">+7 (Russia)</option>
+                                <option value="+34">+34 (Spain)</option>
+                              </select>
+                              <input type="text" id="contact" name="contact" placeholder="Enter mobile number" required>
+                            </div>
+                            <button type="button" style="margin-top: 1%; padding: 8px;" id="sendOTPButton" value="Send OTP">Generate OTP</button>
+                            <div id="messageContainer" class="messageContainer_style1"></div>
+                            </div>
+                          <div class="input-field" id="otpSection">
+                            <label for="otp">Enter Mobile OTP</label>
+                            <input type="text" id="otp" name="otp" placeholder="Enter Mobile Otp Here" required>
+                            <button type="button" class="b1" id="verifyOTPButton" style="margin: 0%;padding: 0%;" value="Verify OTP">Verify OTP</button>
+                              <div id="messageContainer1" class="messageContainer_style2"></div>
+                          </div>
+
+                    </div>
+                </div>
+
+                <div class="details address">
+                    <span class="title">Address Details</span>
+                    <hr style="margin-bottom: 15px;"/>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Locality</label>
+                            <input type="text" placeholder="Enter your Full address" name="address" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>City</label>
+                            <input type="text" placeholder="Enter city" name="city" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>State</label>
+                            <input type="text" placeholder="Enter your state" name="state" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>District</label>
+                            <input type="text" placeholder="Enter your district" name="district" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Pin code</label>
+                             <input type="text" placeholder="Enter pin code" name="pin_code" id="pin_code_input"  required>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="details family">
+                        <span class="title">Bank Details</span>
+                        <hr style="margin-bottom: 15px;"/>
+    
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Account holder name</label>
+                                <input type="text" placeholder="Enter name" name="acc_holder_name" required>
+                            </div>
+    
+                            <div class="input-field">
+                                <label>IFSC</label>
+                                <input type="text" placeholder="Enter IFSC code" name="ifsc" required>
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Account Number</label>
+                                <input type="text" placeholder="Enter account number" name="acc_number" id="acc_number" minlength="5" maxlength="17" required>
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Re-Account Number:</label>
+                                <input type="text" placeholder="Enter account number" name="re_acc_number" id="re_acc_number" minlength="5" maxlength="17" required oninput="checkAccountNumbers()">
+                                <div id="messageContainer4" class="messageContainer_style1"></div>
+                            </div>
+                                <div class="input-field">
+                                    <label>Aadhaar Number</label>
+                                    <input type="text" placeholder="Enter Aadhaar number" name="aadhar_no" minlength="12" maxlength="12" required>
+                                </div>
+                                <div class="input-field">
+                                    <label>Alternate contact</label>
+                                    <input type="text" placeholder="Enter number" name="alt_number" required>
+                                </div>
+
+
+                                <div class="input-field">
+                                    <label for="photo">Photo:</label>
+                                    <input type="file" id="photo" name="img" accept="image/*" required>
+                                </div>
+
+                                <div class="input-field">
+                                    <label for="signature">Signature:</label>
+                                    <input type="file" id="signature" name="sign"  accept="image/*">
+                                  </div>
+                                  <div class="input-field">
+                                    <label for="Aadhaar">Aadhaar Card:</label>
+                                    <input type="file" id="Aadhaar" name="aadhar" accept="image/*" >
+                                  </div>
+
+                                  <p class="para-2">
+                                    <input type="checkbox" id="checkbox" required>
+                                    By clicking the Sign Up button, you agree to our <br />
+                                    <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+                                  </p>
+                                </div>
+
+                        <button type="submit" class="btn" id="submitButton" value="Submit" >Submit</button>
+                        <div class="home">
+                            Return to <a href="/"> Home</a>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            </div>
+    <script>
+
+</script>
+ <script src="{{ url_for('static', filename='js/entries_length.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/gmail_otp_operation.js') }}"></script>
+<script src="{{ url_for('static', filename='js/mobile_otp_operation.js') }}"></script>
+    <script src="script.js"></script>
+</body>
+</html>

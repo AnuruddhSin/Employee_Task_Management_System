@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="static/css/admin_dashboard_css/multi_view_tag.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="static/css/admin_dashboard_css/style.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+<script src="static/js/admin_dashboard_js/script.js"></script>
+<style>
+  tr,td{
+    border: 1px solid var(--main-color);
+    font-size:16px;
+  }
+  .container{
+  justify-content:center;
+  align-items:center;
+  display:flex;
+  margin:50px 50px 20px 50px;
+min-height: 280vh;}
+.Table-heading{
+  align-items: center;
+  font-size: 24px;  
+  animation: glow 1000ms infinite alternate;  
+
+}
+@keyframes glow{
+            form{
+            text-shadow: 0 0 10px #1877f2,
+                         0 0 20px #1459b3,
+                         0 0 30px #179bff;
+            }
+            to {
+             text-shadow: 0 0 5px #1877f2,
+                          0 0 10px #1459b3,
+                          0 0 15px #179bff;
+
+}
+}
+td:nth-child(1){
+  width: 20%;
+}
+td img{
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  filter: drop-shadow(4px 2.5px 6px #00abf0);
+}
+@media only screen and (max-width:960px){
+  .container{
+    min-height: 500vh;
+  }
+  .Table-heading{
+    text-align: center;
+    padding-left: 0;
+  }
+  td,tr{
+    text-align: center;
+    padding-left: 0 ;
+  }
+  td:nth-child(1){
+    width: 100%;
+  }
+}
+</style>
+<title>Employee Details</title>
+</head>
+<body>
+  <input type="checkbox" id="nav-toggle">
+  {% include 'admin_dashboard/sidebar_template.html' %}
+  <div class="main-content">
+      <header>
+          <h2>
+              <label for="nav-toggle">
+                  <span class="las la-bars"></span>
+              </label>
+              View Employee Dashboard
+          </h2>
+          <div class="search-wrapper">
+              <span class="las la-search"></span>
+              <input type="search" placeholder="Search here"/>
+          </div>
+          <div class="user-wrapper">
+              <img src="static/img/admin.png" width="40px" height="40px" alt="">
+              <div>
+                  <h4>Anuj Singh</h4>
+                  <small>Admin</small>
+              </div>
+          </div>
+      </header>
+      <div class="container">
+      <table style="width: 90%; height:auto;">
+        <tr>
+          <td colspan="2" class="Table-heading"> View Details</td>
+        </tr>
+        <tr>
+        <td style="text-align: left;">Full Name</td>
+        <td> {{data_f.f_name}} {{data_f.m_name}} {{data_f.l_name}}</td>
+      </tr>
+        <tr>
+          <td style="text-align: left;">Employee Id</td>
+          <td>{{data_f.employeeId}}</td>
+        </tr>
+           <tr>
+          <td style="text-align: left;">Date of Birth</td>
+          <td>{{data_f.dob}}</td>
+        </tr>
+           <tr>
+          <td style="text-align: left;">Age</td>
+          <td>{{data_f.age}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Gender</td>
+          <td>{{data_f.gender}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Email</td>
+          <td>{{data_f.email}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Mobile Number</td>
+          <td>{{data_f.countryCode}} {{data_f.contact}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Address Details</td>
+          <td>{{data_f.address}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">State</td>
+          <td>{{data_f.state}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">District</td>
+          <td>{{data_f.district}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Pin code</td>
+          <td>{{data_f.pin_code}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Account holder name</td>
+          <td>{{data_f.acc_holder_name}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">IFSC Code</td>
+          <td>{{data_f.ifsc}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Account Number</td>
+          <td>{{data_f.acc_number}}</td>
+        </tr>
+        <!-- <tr>
+          <td style="text-align: left;">Re-Enter Account Number</td>
+          <td>{{data_f.re_acc_number}}</td>
+        </tr> -->
+        <tr>
+          <td style="text-align: left;">Aadhaar Number</td>
+          <td>{{data_f.aadhar_no}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Alternate contact</td>
+          <td>{{data_f.alt_number}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Photo</td>
+          <td><img src="{{ view_profile_requests.img_url }}" width="280" height="200" alt="Profile Photo"></td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Signature</td>
+          <td><img src="{{ view_profile_requests.sign_url }}" width="280" height="200" alt="Profile Photo"></td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Aadhaar Card</td>
+          <td><img src="{{ view_profile_requests.aadhar_url }}" width="280" height="200" alt="Profile Photo"></td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Password</td>
+          <td>{{data_f.password}}</td>
+        </tr>
+        <!-- <tr>
+          <td style="text-align: left;">Re-Enter Password</td>
+          <td>{{data_f.re_password}}</td>
+        </tr> -->
+        <tr>
+          <td style="text-align: left;">Department Name</td>
+          <td>{{data_f.department}}</td>
+        </tr>
+      </table>
+          </div>
+<!-- <title>Add Employee</title>
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-title">View Employee</div>
+    <hr>
+    <div class="form-info">
+      <span class="form-label">Full Name:</span> {{data_f.f_name}} {{data_f.m_name}} {{data_f.l_name}}
+    </div>
+      <div class="form-info">
+      <span class="form-label">Employee Id:</span> {{data_f.employeeId}}
+    </div>
+
+    <div class="form-info">
+      <span class="form-label">Date of Birth:</span> {{data_f.dob}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">Age:</span> {{data_f.age}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">Gender:</span> {{data_f.gender}}
+    </div>
+
+    <div class="form-info">
+      <span class="form-label">Email:</span> {{data_f.email}}
+    </div>
+      <div class="form-info">
+      <span class="form-label">Mobile Number:</span>{{data_f.countryCode}} {{data_f.contact}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">Address Details:</span> {{data_f.address}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">State:</span> {{data_f.state}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">District:</span> {{data_f.district}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">Pin code:</span> {{data_f.pin_code}}
+    </div>
+    <div class="form-info">
+      <span class="form-label">Account holder name:</span> {{data_f.acc_holder_name}}
+    </div>
+    <div class="form-info">
+      <span class="form-label">IFSC:</span> {{data_f.ifsc}}
+    </div>
+    <div class="form-info">
+      <span class="form-label">Account Number:</span> {{data_f.acc_number}}
+    </div>
+    <div class="form-info">
+      <span class="form-label">Re-Account Number:</span> {{data_f.re_acc_number}}
+    </div>
+
+     <div class="form-info">
+      <span class="form-label">Aadhaar Number:</span> {{data_f.aadhar_no}}
+    </div>
+
+     <div class="form-info">
+      <span class="form-label">Alternate contact:</span> {{data_f.alt_number}}
+    </div>
+
+    <div class="form-info">
+  <span class="form-label">Photo:</span>
+<img src="{{ view_profile_requests.img_url }}" width="280" height="200" alt="Profile Photo">
+
+</div>
+
+     <div class="form-info">
+      <span class="form-label">Signature:</span>
+       <img src="{{ view_profile_requests.sign_url }}" width="280" height="200" alt="Profile Photo">
+    </div>
+
+     <div class="form-info">
+      <span class="form-label">Aadhaar Card:</span>
+       <img src="{{ view_profile_requests.aadhar_url }}" width="280" height="200" alt="Profile Photo">
+    </div>
+
+     <div class="form-info">
+      <span class="form-label">Password:</span> {{data_f.password}}
+    </div>
+
+     <div class="form-info">
+      <span class="form-label">Re-enter Password:</span> {{data_f.re_password}}
+    </div>
+
+     <div class="form-info">
+      <span class="form-label">Department Name:</span> {{data_f.department}}
+    </div>
+
+    <button class="action-button">Employee Action</button>
+  </div> -->
+  <div class="last-text">
+      <p>All Copyrights &COPY;ANNI Reserved</p>
+</div>
+  </div>
+</body>
+</html>

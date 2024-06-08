@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1">
+    <title>Add Project</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="static/css/admin_dashboard_css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="static/js/admin_dashboard_js/script.js"></script>
+    <style>
+        body {
+         font-family: Arial, sans-serif;
+         margin: 0px;
+         padding: 0;
+       }
+       .form-container {
+         background-color: #081b29;
+         padding: 70px;
+         border-radius: 10px;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+         width: 100%;
+         max-width: 1000px;
+         margin: 50px 100px 70px 100px ;
+       }
+     .form-container h2{
+         position: relative;
+         align-items: center;
+         color: #00abf0;
+         font-size: 30px;
+         margin-bottom: 15px;
+         margin-left: 300px;
+     }
+       .form-container:hover{
+         box-shadow: 18px 16px 22px #00abf0;
+       }
+
+       .form-container label {
+         display: block;
+         margin-bottom: 5px;
+         font-weight: bold;
+         font-size: 1rem;
+         color: #fff;
+       }
+     .input-field{
+         outline: none;
+         font-size: 14px;
+         font-weight: 400;
+         color: #333;
+         border-radius: 5px;
+         border: 2.5px solid #00abf0;
+         padding: 0 15px;
+         height: 42px;
+         margin: 5px 0;
+     }
+     input:hover{
+         border: 2.5px solid #ee00ff;
+     }
+       .form-container input[type="text"],
+       .form-container input[type="email"],
+       .form-container input[type="tel"],
+       .form-container input[type="password"],
+       .form-container input[type="time"],
+       .form-container input[type="number"],
+       .form-container textarea,
+       .form-container select{
+         width: 100%;
+         border-radius: 5px;
+         padding: 0px;
+         border: 2.5px solid #00abf0;
+         margin:1px;
+         margin-bottom: 20px;
+       }
+       .form-container input:hover,
+       .form-container textarea:hover{
+         border: 2.5px solid #ee00ff;
+       }
+
+       .form-container input[type="file"] {
+         margin-bottom: 15px;
+         color: #707070;
+         padding: 1%;
+
+       }
+
+       .form-container button {
+         background-color: #007bff;
+         color: #fff;
+         border: none;
+         padding: 10px 20px;
+         border-radius: 5px;
+         cursor: pointer;
+         font-weight: bold;  }
+
+       .form-container button:hover {
+         background-color: #ee00ff;
+         transform: translateX(20px);
+         box-shadow: 4px 2px 8px #00abf0;
+     }
+     .row {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 15px;
+       }
+
+       .col {
+         width: 45%; /* Adjust the width as needed */
+       }
+       @media (max-width: 768px) {
+         .row {
+           flex-direction: column;
+         }
+         .col {
+           width: 100%;
+         }
+       }
+     </style>
+</head>
+<body>
+<input type="checkbox" id="nav-toggle">
+{% include 'admin_dashboard/sidebar_template.html' %}
+<div class="main-content">
+    <header>
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+           Edit Project Dashboard
+        </h2>
+
+        <div class="user-wrapper">
+            <img src="static/img/Anuruddh.jpg" width="40px" height="40px" alt="">
+            <div>
+                <h4>Anuruddh Singh</h4>
+                <small>Admin</small>
+            </div>
+        </div>
+    </header>
+    <div class="form-container">
+        <h2>Edit Project</h2>
+        <hr style="margin-bottom: 15px;">
+        <form action="/admin edit project" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col">
+              <label for="department">Department Name</label>
+              <input class="input-field" type="text" id="department" name="department" value="{{department}}"required>
+            </div>
+            <div class="col">
+              <label for="numEmployees">Number of Employees</label>
+              <input class="input-field" type="number" id="numEmployees" name="numEmployees" value="{{numEmployees}}" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="employeeNames">Employee Names</label>
+              <textarea id="employeeNames" name="employeeNames" rows="2" required>{{employeeNames}}</textarea>
+            </div>
+            <div class="col">
+              <label for="projectName">Project Name</label>
+              <input class="input-field" type="text" id="projectName" name="projectName" value="{{projectName}}" required>
+            </div>
+          </div>
+              <label for="projectDescription">Project Description</label>
+              <textarea id="projectDescription" name="projectDescription" rows="3" >{{projectDescription}}</textarea>
+          <div class="row">
+            <div class="col">
+    <label for="projectPriority">Project Priority</label>
+    <select id="projectPriority" name="projectPriority" class="priority-select" required>
+        <option value="" disabled>Select Project Priority</option>
+        <option value="low" {% if projectPriority =='low' %}selected{% endif %}>Low</option>
+        <option value="normal" {% if projectPriority =='normal' %}selected{% endif %}>Normal</option>
+        <option value="high" {% if projectPriority =='high' %}selected{% endif %}>High</option>
+        <option value="urgent" {% if projectPriority =='urgent' %}selected{% endif %}>Urgent</option>
+    </select>
+</div>
+
+
+            <div class="col">
+    <label for="projectStatus">Project Status</label>
+    <select id="projectStatus" name="projectStatus" class="status-select" required>
+        <option value="" disabled>Select Project Status</option>
+        <option value="In-progress" {% if projectStatus =='In-progress' %}selected{% endif %}>In-progress</option>
+        <option value="review" {% if projectStatus =='review' %}selected{% endif %}>Review</option>
+        <option value="Completed" {% if projectStatus =='Completed' %}selected{% endif %}>Completed</option>
+    </select>
+</div>
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="startTime">Start Date</label>
+              <input class="input-field" type="date" id="startTime" name="startTime" value="{{startTime}}" required style="width: 389px;">
+              </div>
+              <div class="col">
+              <label for="endTime">End Date</label>
+              <input class="input-field" type="date" id="endTime" name="endTime" value="{{endTime}}" required style="width: 389px;">
+            </div>
+          </div>
+      <div class="row" style="margin-left: 400px; margin-top: 50px;">
+          <button type="submit">Apply Changes</button>
+          </div>
+        </form>
+</div>
+    <div class="last-text">
+      <p>All Copyrights &COPY;ANNI Reserved</p>
+    </div>
+</div>
+</body>
+</html>

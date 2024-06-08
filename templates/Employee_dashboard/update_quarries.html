@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1">
+    <title>Add Task</title>
+    <link rel="stylesheet"
+          href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="static/css/admin_dashboard_css/style.css">
+
+
+    <link rel="stylesheet" href="static/css/admin_dashboard_css/multi_select_tag.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <script src="static/js/admin_dashboard_js/script.js"></script>
+    <style>
+        body {
+         font-family: Arial, sans-serif;
+         margin: 0px;
+         padding: 0;
+       }
+       .form-container {
+         background-color: #081b29;
+         padding: 70px;
+         border-radius: 10px;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+         width: 90%;
+         margin: 5vw auto ;
+       }
+     .form-container h2{
+         position: relative;
+         align-items: center;
+         color: #00abf0;
+         font-size: 30px;
+         margin-bottom: 15px;
+         text-align:center;
+     }
+       .form-container:hover{
+         box-shadow: 18px 16px 22px #00abf0;
+       }
+
+       .form-container label {
+         display: block;
+         margin-bottom: 5px;
+         font-weight: bold;
+         font-size: 1rem;
+         color: #fff;
+       }
+     .input-field{
+         outline: none;
+         font-size: 14px;
+         font-weight: 400;
+         color: #333;
+         border-radius: 5px;
+         border: 2.5px solid #00abf0;
+         padding: 0 15px;
+         height: 42px;
+         margin: 5px 0;
+     }
+     input:hover{
+         border: 2.5px solid #ee00ff;
+     }
+       .form-container input[type="text"],
+       .form-container input[type="number"],
+       .form-container textarea {
+         width: 100%;
+         border-radius: 5px;
+         padding: 0px;
+         border: 2.5px solid #00abf0;
+         margin:1px;
+         margin-bottom: 20px;
+       }
+       .form-container input:hover,
+       .form-container textarea:hover{
+         border: 2.5px solid #ee00ff;
+       }
+
+       .form-container input[type="file"] {
+         margin-bottom: 15px;
+         color: #707070;
+         padding: 1%;
+
+       }
+
+       .form-container button {
+         background-color: #007bff;
+         color: #fff;
+         border: none;
+         padding: 10px 20px;
+         border-radius: 5px;
+         cursor: pointer;
+         font-weight: bold;  }
+
+       .form-container button:hover {
+         background-color: #ee00ff;
+         transform: translateX(20px);
+         box-shadow: 4px 2px 8px #00abf0;
+     }
+     .row {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 15px;
+       }
+
+       .col {
+         width: 45%; /* Adjust the width as needed */
+       }
+              .sub{
+  margin-left: 400px;
+}
+       @media (max-width: 768px) {
+         .row {
+           flex-direction: column;
+         }
+         .col {
+           width: 100%;
+         }
+                  .sub{
+          margin-left: 150px;
+          width: 40%;
+         }
+       }
+              @media (max-width:540px) {
+        .sub{
+          margin-left: 80px;
+          width: 40%;
+         }
+       }
+     </style>
+</head>
+<body>
+<input type="checkbox" id="nav-toggle">
+{% include 'Employee_dashboard/sidebar_common_code.html' %}
+<div class="main-content">
+    <header style="margin-bottom:100px;">
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+                        Employee Dashboard
+
+        </h2>
+         <div class="search-wrapper">
+    <span class="las la-search"></span>
+    <input type="search" id="taskSearch" name="taskSearch" placeholder="Search for Task by ID" oninput="filterTasks()">
+</div>
+        <div class="user-wrapper">
+            <div>
+                <h4>{{session.employeeName}}</h4>
+                <small>Employee ID: {{session.employeeId}}</small>
+            </div>
+        </div>
+    </header>
+    <div class="form-container">
+        <h2>Task Action </h2>
+
+        <form action="/update_quarries" method="post" enctype="multipart/form-data">
+            <div class="row"></div>
+            <div class="col">
+                <input type="hidden" class="input-field" id="datetime" name="real_time_sh" readonly required style="width: 100%">
+            </div>
+
+            <hr style="margin-bottom: 15px;">
+         <div class="row">
+    <div class="col">
+        <label for="task_idss">Task Id</label>
+        <input type="text" id="task_idss" name="task_idss" value="{{data.task_idss}}" style="width: 100%; height:50%">
+    </div>
+
+    <div class="col">
+        <label for="taskNamess">Task Name</label>
+        <input type="text" id="taskNamess" name="taskNamess" value="{{data.taskNamess}}" style="width: 100%; height:50%">
+    </div>
+</div>
+<label for="assigned_tk">Assigned Task Discription</label>
+            <textarea id="assigned_tk" name="description" rows="3">{{data.description}}</textarea>
+            <label for="task_issue">Issue</label>
+            <textarea id="task_issue" name="task_issue" rows="3">{{data.task_issue}}</textarea>
+
+            <label for="task_solution">Task Solution</label>
+            <textarea id="task_solution" name="task_solution" rows="3">{{data.task_solution}}</textarea>
+
+ <input type="hidden" name="task_querry_id" value="{{ data.task_querry_id }}">
+           <div class="row" style="margin-left: 400px; margin-top: 50px;">
+                <button type="submit">Apply Changes</button>
+            </div>
+        </form>
+    </div>
+    <div class="last-text">
+      <p>All Copyrights &COPY;ANNI Reserved</p>
+    </div>
+</div>
+<script>
+function updateTaskName() {
+    var task_id = document.getElementById("task_id").value;
+    var taskNameSelect = document.getElementById("taskName");
+
+
+    for (var i = 0; i < taskNameSelect.options.length; i++) {
+        if (taskNameSelect.options[i].value === task_id) {
+            taskNameSelect.selectedIndex = i;
+            break;
+        }
+    }
+}
+</script>
+
+
+</body>
+</html>

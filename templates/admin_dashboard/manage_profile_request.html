@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1">
+    <title>Manage Employee</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="static/css/admin_dashboard_css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="static/js/admin_dashboard_js/script.js"></script>
+</head>
+<body>
+<input type="checkbox" id="nav-toggle">
+{% include 'admin_dashboard/sidebar_template.html' %}
+<div class="main-content">
+    <header>
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+            Manage Profile Requests
+        </h2>
+        <div class="search-wrapper">
+            <span class="las la-search"></span>
+            <input type="search" placeholder="Search here"/>
+        </div>
+        <div class="user-wrapper">
+            <img src="static/img/Anuruddh.jpg" width="40px" height="40px" alt="">
+            <div>
+                <h4>Anuruddh Singh</h4>
+                <small>Admin</small>
+            </div>
+        </div>
+    </header>
+    <div class="manage_employee">
+        <!-- <section class="recent"> -->
+            <div class="activity-card">
+                <div class="card-header">
+                    <h1>Profile Requests</h1>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Employee Name</th>
+                        <th>Employee Contact No</th>
+                        <th>Employee Email </th>
+                        <th>Gender</th>
+                        <th>View</th>
+                        <th>Add</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in manage_profile_request %}
+                    <tr>
+
+                        <td data-label="S.No">{{ loop.index }}</td>
+                        <td data-label="Employee Name">{{row.1}} {{row.2}} {{row.3}}</td>
+                        <td data-label="Employee Contact No">{{row.8}}</td>
+                        <td data-label="Employee Email ">{{row.7}}</td>
+                        <td data-label="Gender">{{row.6}}</td>
+                        <td data-label="View">
+                <a href="/view_profile_requests?contact={{ row.8 }}"><i class='las la-eye' style="font-size: 1.8rem; color: aliceblue;"></i></a>
+            </td>
+            <td data-label="Add"><a href ="/admin_add_emp_by_profile?contact={{ row.8 }}"><button class="badge success"  >Add</button></a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        </div>
+    <div class="last-text">
+      <p>All Copyrights &COPY;ANNI Reserved</p>
+    </div>
+    </div>
+</body>
+</html>

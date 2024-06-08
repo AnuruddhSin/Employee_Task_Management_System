@@ -1,0 +1,85 @@
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h2><span class="lab la-accusoft"></span><span>ANNI</span></h2>
+    </div>
+    <div class="sidebar-menu">
+        <ul id="sidebar-list" >
+            <li>
+                <a href="/Admin Dashboard" class="active" ><span class="las la-igloo"></span>
+                    <span>Dashboard</span></a>
+            </li>
+            <li>
+                <a href="#"><span class="las la-users"></span>
+                    <span>Team</span></a>
+                <ul>
+                    <li>
+                        <a href="/Admin add dep"><span class="las la-user-plus"></span>
+                            <span>Create New Team</span></a>
+                    </li>
+                    <li>
+                        <a href="/Admin mang dep"><span class="las la-caret-right"></span>
+                            <span>Manage Existing Team</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><span class="las la-user"></span>
+                    <span>Employee</span></a>
+                <ul>
+                    <li>
+                        <a href="/Admin add emp"><span class="las la-user-plus"></span>
+                            <span>Add Employee</span></a>
+                    </li>
+                    <li>
+                        <a href="/Admin mang emp"><span class="las la-caret-right"></span>
+                            <span>Manage Employee</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><span class="las la-tasks"></span>
+                    <span>Task</span></a>
+                <ul>
+                    <li>
+                        <a href="/Admin add task"><span class="las la-plus"></span>
+                            <span>Add Task</span></a>
+                    </li>
+                    <li>
+                        <a href="/Admin mang task"><span class="las la-caret-right"></span>
+                            <span>Manage Task</span></a>
+                    </li>
+                     <li>
+                        <a href="/manage_task_quaries_by_admin"><span class="las la-caret-right"></span>
+                            <span>Existing Queries</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                        <a href="/Admin"><i class='bx bx-log-out' style="font-size:1.5rem; margin-right:10px;"></i>
+                            <span>Log Out</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    function setActiveLink(clickedLink) {
+        // Remove the "active" class from all links
+        var links = document.querySelectorAll('#sidebar-list a');
+        links.forEach(function(link) {
+            link.classList.remove('active');
+        });
+
+        // Add the "active" class to the clicked link
+        clickedLink.classList.add('active');
+    }
+
+    // Add a click event listener to each sidebar link
+    var links = document.querySelectorAll('#sidebar-list a');
+    links.forEach(function(link) {
+        link.addEventListener('click', function() {
+            setActiveLink(link);
+        });
+    });
+</script>
+

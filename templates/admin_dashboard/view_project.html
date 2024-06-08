@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root {
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .project-card {
+    background-color: var(--second-bg-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+  }
+  .project-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+  .project-label {
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  .project-info {
+    margin-bottom: 25px;
+    color: var(--text-color);
+  }
+  .priority-label {
+    font-weight: bold;
+    color: var(--main-color);
+  }
+  .action-button {
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 150px;
+  }
+</style>
+<title>Project Details</title>
+</head>
+<body>
+  <div class="project-card">
+    <div class="project-title">Project Details</div>
+    <hr>
+    <div class="project-info">
+      <span class="project-label">Department Name:</span>{{department}}
+    </div>
+    <div class="project-info">
+      <span class="project-label">Number of Employees:</span> {{numEmployees}}
+    </div>
+    <div class="project-info">
+      <span class="project-label">Employee Names:</span>{{employeeNames}}
+    </div>
+    <div class="project-info">
+      <span class="project-label">Project Name:</span> {{projectName}}
+    </div>
+    <div class="project-info">
+      <span class="project-label">Project Description:</span> {{projectDescription}}
+    </div>
+    <div class="project-info">
+      <span class="project-label">Project Priority:</span> <span class="priority-label">{{projectPriority}}</span>
+    </div>
+    <div class="project-info">
+      <span class="project-label">Project Status:</span> {{projectStatus}}
+    </div>
+    <div class="project-info">
+      <span class="project-label">Start Time:</span> {{startTime}}
+    </div>
+    <div class="project-info">
+      <span class="project-label">End Time:</span> {{endTime}}
+    </div>
+    <button class="action-button">Project Action</button>
+  </div>
+</body>
+</html>

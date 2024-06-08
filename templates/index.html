@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/520e53c076.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navigation">
+      <div class="wrapper">
+        <div class="logo"><a href="/">
+          <div class="sidebar-brand">
+            <h2><span class="lab la-accusoft"></span><span>ANNI</span></h2>
+        </div>
+        </a></div>
+        <input type="radio" name="slider" id="menu-btn" />
+        <input type="radio" name="slider" id="close-btn" />
+        <ul class="nav-links">
+          <label for="close-btn" class="btn close-btn"
+            ><i class="fas fa-times"></i
+          ></label>
+          <li><a href="/">Home</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li>
+            <a href="/login" class="desktop-item">
+              Log In
+            </a>
+             <input type="checkbox" id="showDrop" />
+            <label for="showDrop" class="mobile-item">Log In</label>
+            <ul class="drop-menu">
+              <li><a href="/loginemp">Employee</a></li>
+              <li><a href="/Login Client">Client</a></li>
+              <li><a href="/Admin">Admin</a></li>
+            </ul>
+          </li>
+        </ul>
+        <label for="menu-btn" class="btn menu-btn"
+          ><i class="fas fa-bars"></i
+        ></label>
+      </div>
+    </nav>
+    <div class="hero">
+      <div class="body-text">
+        <div id="head1" class="main-head">
+          <div class="patterns">
+            <svg>
+<text x="50%" y="90%" text-anchor="middle" fill="#f2dede" style="font-size: 114px; text-shadow: 0 0 5px #f2dede, 0 0 10px #f2dede, 0 0 15px #f2dede;">EMPLOYEE TASK</text>
+            </svg>
+          </div>
+        </div>
+        <div id="head2" class="sub-head"><h2>Management</h2></div>
+        <div id="head3" class="sub-head"><h2>System</h2></div>
+        <div class="buttons">
+          <div class="btn">
+            <div class="dropdown">
+              <button class="dropbtn button-86">Login</button>
+              <div class="dropdown-content-signup">
+                <a href="/loginemp">Employee</a>
+                <a href="/Login Client">Client</a>
+                <a href="/Admin">Admin</a>
+              </div>
+            </div>
+          </div>
+          <div class="btn">
+            <div class="dropdown">
+              <button class="dropbtn button-86">Sign Up</button>
+              <div class="dropdown-content">
+                <a href="/Register Employee">Employee</a>
+                 <a href="/Register Client">Client</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-section">
+      <div class="about-head">
+        <h4>About</h4>
+      </div>
+      <div class="about-text">
+        <div class="para" id="para">
+           <p>
+            The Employee Task Management System enables employees to register and request authentication from admins. Upon admin approval, employees receive their login credentials via email. The system allows admins to update employee details and passwords. Employees can also update their passwords. Admins can assign tasks to employees, and employees can delegate tasks to others. The query section allows employees to ask questions, which are tracked until resolved.
+          </p>
+        </div>
+        <div class="robo-img">
+          <img src="static/img/employee-task-management-system.png" alt="">
+        </div>
+      </div>
+    </div>
+        <div class="features">
+      <h3>Features</h3>
+      <div class="cards">
+        <div class="card-single">
+          <div class="icon">
+            <i class="fa-solid fa-users-viewfinder"></i>
+          </div>
+          <div class="card-heading">
+            <h1><strong>Employee Registration</strong></h1>
+                       <span>Employees register and request admin approval for authentication.</span>
+
+          </div>
+          <div>
+            <span class="las la-users"></span>
+          </div>
+        </div>
+        <div class="card-single">
+          <div class="icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="card-heading">
+            <h1><strong> Email Notifications</strong></h1>
+            <span>Automated emails with login credentials after admin approval.</span>
+          </div>
+          <div>
+            <span class="las la-user"></span>
+          </div>
+        </div>
+        <div class="card-single">
+          <div class="icon">
+            <i class="fa-solid fa-user-edit"></i>
+          </div>
+          <div class="card-heading">
+            <h1><strong> Profile Management</strong></h1>
+                       <span>Admins and employees can update profiles and passwords.</span>
+
+          </div>
+          <div>
+            <span class="las la-user"></span>
+          </div>
+        </div>
+
+        <div class="card-single">
+          <div class="icon">
+            <i class="fa-solid fa-tasks"></i>
+          </div>
+          <div class="card-heading">
+            <h1><strong>Task Assignment </strong></h1>
+            <span>Admins assign tasks to employees; employees can delegate tasks.</span>
+          </div>
+          <div>
+            <span class="las la-user"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>All Copyrights &COPY;ANNI Reserved</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root {
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .form-container {
+    background-color: var(--second-bg-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+  }
+  .form-container:hover{
+    box-shadow: 18px 16px 22px rgba(5, 124, 183, 0.661);
+    transform: translateY(-10px);
+  }
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    animation: glow 1000ms infinite alternate;
+  }
+  .form-label {
+    font-weight: bold;
+    color: var(--text-color);
+    animation: glow 1000ms infinite alternate;
+  }
+  @keyframes glow{
+    form{
+    text-shadow: 0 0 10px #1877f2,
+                 0 0 20px #1459b3,
+                 0 0 30px #179bff;
+    }
+    to {
+     text-shadow: 0 0 5px #1877f2,
+                  0 0 10px #1459b3,
+                  0 0 15px #179bff;
+     }
+  }
+  .form-info {
+    margin-bottom: 20px;
+    color: var(--text-color);
+  }
+  .form-image {
+    width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .action-button {
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left:110px;
+    font-weight: bold;
+  }
+  .action-button:hover{
+    transform:translateY(-10px);
+    box-shadow: 0 0 5px #0399e9f9,
+                0 0 25px #0399e9f9,
+                0 0 50px #0399e9f9,
+                0 0 200px#0399e9f9;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+  }
+</style>
+<title>Add Employee</title>
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-title">View Employee</div>
+    <hr>
+    <div class="form-info">
+      <span class="form-label">Full Name:</span> {{data_f.f_name}} {{data_f.m_name}} {{data_f.l_name}}
+    </div>
+    <div class="form-info">
+      <span class="form-label">Date of Birth:</span> {{data_f.dob}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">Age:</span> {{data_f.age}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">Gender:</span> {{data_f.gender}}
+    </div>
+
+    <div class="form-info">
+      <span class="form-label">Email:</span> {{data_f.email}}
+    </div>
+      <div class="form-info">
+      <span class="form-label">Mobile Number:</span>{{data_f.countryCode}} {{data_f.contact}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">Address Details:</span> {{data_f.address}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">State:</span> {{data_f.state}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">District:</span> {{data_f.district}}
+    </div>
+
+      <div class="form-info">
+      <span class="form-label">Pin code:</span> {{data_f.pin_code}}
+    </div>
+    <div class="form-info">
+      <span class="form-label">Account holder name:</span> {{data_f.acc_holder_name}}
+    </div>
+    <div class="form-info">
+      <span class="form-label">IFSC:</span> {{data_f.ifsc}}
+    </div>
+    <div class="form-info">
+      <span class="form-label">Account Number:</span> {{data_f.acc_number}}
+    </div>
+    <div class="form-info">
+      <span class="form-label">Re-Account Number:</span> {{data_f.re_acc_number}}
+    </div>
+
+     <div class="form-info">
+      <span class="form-label">Aadhaar Number:</span> {{data_f.aadhar_no}}
+    </div>
+
+     <div class="form-info">
+      <span class="form-label">Alternate contact:</span> {{data_f.alt_number}}
+    </div>
+
+    <div class="form-info">
+  <span class="form-label">Photo:</span>
+<img src="{{ view_profile_requests.img_url }}" width="280" height="200" alt="Profile Photo">
+
+</div>
+
+     <div class="form-info">
+      <span class="form-label">Signature:</span>
+       <img src="{{ view_profile_requests.sign_url }}" width="280" height="200" alt="Profile Photo">
+    </div>
+
+     <div class="form-info">
+      <span class="form-label">Aadhaar Card:</span>
+       <img src="{{ view_profile_requests.aadhar_url }}" width="280" height="200" alt="Profile Photo">
+    </div>
+    <button class="action-button">Employee Action</button>
+  </div>
+</body>
+</html>

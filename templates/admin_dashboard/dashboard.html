@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="static/css/admin_dashboard_css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="static/js/admin_dashboard_js/script.js"></script>
+</head>
+<body>
+<input type="checkbox" id="nav-toggle">
+{% include 'admin_dashboard/sidebar_template.html' %}
+<div class="main-content">
+    <header>
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+            Dashboard
+        </h2>
+
+        <div class="user-wrapper">
+            <img src="static/img/Anuruddh.jpg" width="40px" height="40px" alt="">
+            <div>
+                <h4>Anuruddh Singh</h4>
+                <small>Admin</small>
+            </div>
+        </div>
+    </header>
+    <main action="#" method="post" enctype = multipart/form-data>
+        <div class="cards">
+            <div class="card-single">
+
+        <div>
+            <a href="/Admin mang dep">
+            <h1 name="total_department">{{ num_departments }}</h1>
+            <span>Total Teams</span> </a>
+        </div>
+        <div><a href="/Admin mang dep">
+            <span class="las la-users"></span></a>
+        </div>
+
+</div>
+            <div class="card-single">
+
+                <div><a href="/Admin mang emp">
+                    <h1 name="total_pro">{{ num_employees }}</h1>
+                    <span>Total Employees</span></a>
+                </div>
+                <div><a href="/Admin mang emp">
+                    <span class="las la-clipboard-list"></span></a>
+                </div>
+            </div>
+            <div class="card-single">
+                <div><a href="/Admin mang task">
+                    <h1 name="total_task">{{ num_tasks }}</h1>
+                    <span>Total Tasks</span></a>
+                </div>
+                <div><a href="/Admin mang task">
+                    <span class="las la-clipboard"></span></a>
+                </div>
+            </div>
+<!--            <div class="card-single">-->
+<!--                <div><a href="/progress project">-->
+<!--                    <h1 namne="inpro_task">{{ num_projects }}</h1>-->
+<!--                    <span>Total Projects</span></a>-->
+<!--                </div>-->
+<!--                <div><a href="/progress project">-->
+<!--                    <span class="las la-tasks"></span></a>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="card-single">
+                <div><a href="manage_profile_request">
+                    <h1 name="requests">{{num_reg_employee}}</h1>
+                    <span>Profile Requests</span></a>
+                </div>
+                <div><a href="manage_profile_request">
+                    <span class="las la-user"></span></a>
+                </div>
+            </div>
+
+        </div>
+        <section class="recent">
+            <div class="activity-card">
+                <div class="card-header">
+                    <h3>Recent Activity</h3>
+                    <button>See all<span class="las la-arrow-right"></span></button>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Team</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td data-label="Project">Web Development</td>
+                        <td data-label="Start Date">06 August,2023 </td>
+                        <td data-label="End Date">10 August,2023</td>
+                        <td data-label="Team">
+                            <div class="img-1">img</div>
+                            <div class="img-2"></div>
+                            <div class="img-3"></div>
+                        </td>
+                        <td data-label="Status">
+                            <span class="badge success">Success</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Project">Animation</td>
+                        <td data-label="Start Date">10 August,2023 </td>
+                        <td data-label="End Date">20 August,2023</td>
+                        <td data-label="Team">
+                            <div class="img-1">img</div>
+                            <div class="img-2"></div>
+                            <div class="img-3"></div>
+                        </td>
+                        <td data-label="Status">
+                            <span class="badge warning">Processing</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Project">Video Editing</td>
+                        <td data-label="Start Date">01 August,2023 </td>
+                        <td data-label="End Date">15 August,2023</td>
+                        <td data-label="Team">
+                            <div class="img-1">IMG</div>
+                            <div class="img-2"></div>
+                            <div class="img-3"></div>
+                        </td>
+                        <td data-label="Status">
+                            <span class="badge success">Success</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Project">Logo Design</td>
+                        <td data-label="Start Date">04 August,2023 </td>
+                        <td data-label="End Date">25August,2023</td>
+                        <td data-label="Team">
+                            <div class="img-1">IMG</div>
+                            <div class="img-2"></div>
+                            <div class="img-3"></div>
+                        </td>
+                        <td data-label="Status">
+                            <span class="badge success">Success</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="activity-card">
+                <div class="card-header">
+                    <h3>History</h3>
+                    <button>See all<span class="las la-arrow-right"></span></button>
+                </div>
+                <div class="card-body">
+                    <div class="history">
+                        <div>
+                            <h4>Web Development was completed on 9 July,2023.</h4>
+                            <small>Team - John, Angela, lewis </small>
+                        </div>
+                        <span class="las la-comment"></span>
+                    </div>
+                    <div class="history">
+                        <div>
+                            <h4>Web Development was completed on 9 July,2023.</h4>
+                            <small>Team - John, Angela, lewis </small>
+                        </div>
+                        <span class="las la-comment"></span>
+                    </div>
+                    <div class="history">
+                        <div>
+                            <h4>Web Development was completed on 9 July,2023.</h4>
+                            <small>Team - John, Angela, lewis </small>
+                        </div>
+                        <span class="las la-comment"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="last-text">
+      <p>All Copyrights &COPY;ANNI Reserved</p>
+    </div>
+</div>
+</body>
+</html>

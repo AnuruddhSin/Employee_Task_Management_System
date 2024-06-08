@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="static/css/registration_client.css">
+     
+    <title>Client Regisration Form </title> 
+</head>
+<body>
+    <div class="container">
+        <header>Registration Form</header>
+
+        <form action="#" method="post">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your name" name="full_name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            <input type="date" placeholder="Enter birth date" name="dob" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Age</label>
+                            <input type="number" placeholder="Enter your Age" name="age" required>
+                        </div>
+                        
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select name="gender" required>
+                                <option disabled selected>Select gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" placeholder="Enter your email" name="email" required>
+                            <button class="b1" style="margin: 0%;padding: 0%;">Generate OTP</button>
+                        </div>
+                        <div class="input-field">
+                            <label>Enter Email OTP</label>
+                            <input type="number" placeholder="Enter OTP" required>
+                            <button class="b1" style="margin: 0%;padding: 0%;">Verify OTP</button>
+                        </div>
+                        <!-- <div class="input-field"style="margin-top: 2.4%;">
+                            <p class="p11" >Mobile Number</p>
+                            <input type="phone" placeholder="Enter mobile number" required>
+                           
+                        </div> -->
+                        <div class="form-group1">
+                            <label for="mobileNumber">Mobile Number:</label>
+                            <div style="display: flex;">
+                              <select id="countriesCode" name="countryCode" required onchange="updateNumberPad(this)">
+                                <option value="" disabled selected>Select Country Code</option>
+                                <option value="+1">+1 (USA)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+91">+91 (India)</option>
+                                <option value="+61">+61 (Australia)</option>
+                                <option value="+86">+86 (China)</option>
+                                <option value="+33">+33 (France)</option>
+                                <option value="+49">+49 (Germany)</option>
+                                <option value="+81">+81 (Japan)</option>
+                                <option value="+7">+7 (Russia)</option>
+                                <option value="+34">+34 (Spain)</option>
+                              </select>
+                              <input type="phone" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number" required>
+                            </div>
+                            <button type="button" style="margin-top: 1%; padding: 8px;"  id="sendOTPButton">Generate OTP</button>
+                            </div>
+                          <div class="input-field">
+<!--                            <label>Enter Mobile OTP</label>-->
+<!--                            <input type="number" placeholder="Enter OTP" required>-->
+<!--                            <button class="b1" style="margin: 0%;padding: 0%;">Verify OTP</button>-->
+<!--                          </div>-->
+                        <div id="otpSection" style="display: none;">
+            <label for="otp">Enter Mobile OTP:</label>
+            <input type="text" id="otp" name="otp" required>
+            <br><br>
+            <button type="button" id="verifyOTPButton"  style="margin: 0%;padding: 0%;">Verify OTP</button>
+            <br><br>
+        </div>
+                    </div>
+                </div>
+    </div>
+                <div class="details address">
+                    <span class="title">Address Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Locality</label>
+                            <input type="text" placeholder="Enter your Full address" name="address" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>city</label>
+                            <input type="text" placeholder="Enter city" name="city" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>State</label>
+                            <input type="text" placeholder="Enter your state" name="state" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>District</label>
+                            <input type="text" placeholder="Enter your district" name="district" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Pin code</label>
+                            <input type="number" placeholder="Enter pin code" name="pin_code" required>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="details family">
+                                  <p class="para-2">
+                                    <input type="checkbox" id="checkbox" required>
+                                    By clicking the Sign Up button, you agree to our <br />
+                                    <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+                                  </p>
+                                </div>
+                                <!-- <p class="para-2">
+                                  Already have an account? <a href="login.html">Login here</a>
+                                </p> -->
+                               <button type="submit" class="sumbit" id="submitButton" value="Submit">Submit</button>
+
+                        <div class="home">
+                            Return to <a href="/"> Home</a>
+                        </div>
+                    </div>
+                    
+            </form>
+                </div>
+            </div>
+    </div>
+<script src="{{ url_for('static', filename='js/gmail_otp_operation.js') }}"></script>
+<script src="{{ url_for('static', filename='js/mobile_otp_operation.js') }}"></script>
+    <script src="script.js"></script>
+<!--    <script src="script.js"></script>-->
+</body>
+</html>

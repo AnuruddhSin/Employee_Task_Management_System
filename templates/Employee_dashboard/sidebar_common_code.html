@@ -1,0 +1,59 @@
+
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h2><span class="lab la-accusoft"></span><span>ANNI</span></h2>
+    </div>
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <a href="/emp_dashboard" class="active"><span class="las la-tasks"></span>
+                    <span>Assigned By Me</span></a>
+            </li>
+            <li>
+                <a href="/assign"><span class="las la-clipboard-list"></span>
+                    <span>Assigned To Me</span></a>
+            </li>
+<li>
+                <a href="#"><span class="las la-user-edit"></span>
+                    <span>Queries</span></a>
+                <ul>
+                    <li>
+                     <a href="/add_task_issue"><span class="las la-user-edit"></span>
+                    <span>Add New Query</span></a>
+                    </li>
+
+                    <li>
+                        <a href="/manage_task_quaries"><span class="las la-caret-right"></span>
+                            <span>Existing Queries</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                        <a href="/loginemp"><i class='bx bx-log-out' style="font-size:1.5rem; margin-right:10px;"></i>
+                            <span>Log Out</span></a>
+            </li>
+        </ul>
+
+<!--        <ul>-->
+<!--        <li>-->
+<!--               <li>-->
+<!--                <a href="/all_action"><span class="las la-user-edit"></span>-->
+<!--                    <span>Queries</span></a>-->
+<!--                </li></ul>-->
+    </div>
+</div>
+  <script>
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.sidebar-menu a');
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.parentElement.classList.add('actives');
+            }
+        });
+    </script>
+<style>
+
+        }
+    </style>

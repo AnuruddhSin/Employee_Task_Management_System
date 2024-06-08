@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login Form </title>
+    <link rel="stylesheet" href="static/css/employee_login.css">
+  </head>
+  <body>
+    <div class="center">
+      <form method="post" >
+        <h1>Employee Login</h1>
+        <div class="txt_field">
+          <input type="text" name="employeeId" required>
+          <span></span>
+          <label>Employee ID</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" name="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+<!--        <div class="pass">Forgot Password?</div>-->
+        <div>
+        <input type="submit" value="Login"></div><br/>
+
+         {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <div class="signup_link">
+          Not a member? <a href="/Register Employee">Signup</a>
+        </div>
+        <div class="home">
+            Return to <a href="/"> Home</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
